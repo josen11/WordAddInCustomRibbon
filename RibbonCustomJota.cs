@@ -19,14 +19,18 @@ namespace WordAddInCustomRibbon
         private void gallerySymbols_Load(object sender, RibbonControlEventArgs e)
         {
             gallerySymbols.Items.Clear();
-            // Add symbols to the Gallery
-            AddSymbolToGallery("\u00B6", "Paragraph Symbol"); // ¶
+            // Add symbols to the Gallery using unicode character
             AddSymbolToGallery("\u00A7", "Section Symbol"); // §
+            AddSymbolToGallery("\u00A7" + "\u00A7", "Double Section Symbol"); // §§
+            AddSymbolToGallery("\u00B6", "Paragraph Symbol"); // ¶
+            AddSymbolToGallery("\u00B6" + "\u00B6", "Double Paragraph Symbol"); // ¶¶
             AddSymbolToGallery("\u00A9", "Copyright Symbol"); // ©
+            AddSymbolToGallery("\u00AE", "Section Symbol"); // ®
             AddSymbolToGallery("\u2122", "Trademark Symbol"); // ™
-            AddSymbolToGallery("\u20AC", "Euro Symbol"); // €
-            AddSymbolToGallery("\u00BA", "Masculine Ordinal Indicator"); // º
             AddSymbolToGallery("\u00A2", "Cent Symbol"); // ¢
+            AddSymbolToGallery("\u20AC", "Euro Symbol"); // €
+            AddSymbolToGallery("\u00A5", "Japanese Yen"); // ¥
+            AddSymbolToGallery("\u00BA", "Masculine Ordinal Indicator"); // º
         }
         private void AddSymbolToGallery(string symbol, string label)
         {
@@ -34,7 +38,6 @@ namespace WordAddInCustomRibbon
             RibbonDropDownItem itemToAdd = Factory.CreateRibbonDropDownItem();
             itemToAdd.Label = string.Empty;
             itemToAdd.Tag = symbol;
-
             itemToAdd.Image = GetImageForSymbol(symbol);
             gallerySymbols.Items.Add(itemToAdd);
         }
@@ -43,7 +46,7 @@ namespace WordAddInCustomRibbon
         {
             // Create an image with the symbol using a font
             System.Drawing.Font font = new System.Drawing.Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Pixel);
-            Bitmap image = new Bitmap(13, 19);
+            Bitmap image = new Bitmap(33, 19);
             using (Graphics g = Graphics.FromImage(image))
             {
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;

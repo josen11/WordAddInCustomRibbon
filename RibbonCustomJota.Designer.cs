@@ -59,6 +59,7 @@
             // 
             // gallerySymbols
             // 
+            this.gallerySymbols.ColumnCount = 1;
             this.gallerySymbols.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.gallerySymbols.Label = "Symbols";
             this.gallerySymbols.Name = "gallerySymbols";
